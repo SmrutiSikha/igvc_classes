@@ -1,0 +1,18 @@
+import cv2 as cv 
+import matplotlib.pyplot as plt
+image=cv.imread('img.jpg')
+print(image.shape[1])
+rgb=cv.cvtColor(image,cv.COLOR_BGR2RGB)
+plt.imshow(image)
+plt.imshow(rgb)
+gray=cv.cvtColor(rgb,cv.COLOR_RGB2GRAY)
+plt.imshow(gray)
+hist=cv.calcHist([gray],[0],None,[256],[0,256])
+plt.figure()
+plt.title("Grayscale Histogram")
+plt.xlabel("Bins")
+plt.ylabel("# of Pixels")
+plt.plot(hist)
+plt.xlim([0, 256])
+plt.show()
+cv.waitKey(0)
